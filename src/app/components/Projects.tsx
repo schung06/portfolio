@@ -1,5 +1,9 @@
 import { Code2, Database, Globe, Smartphone } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import Allaboard from "@/app/assets/Allaboard.png";
+import OneLife from "@/app/assets/1Life.png";
+import WayBackHome from "@/app/assets/WayBackHome.webp";
+import Portfolio from "@/app/assets/Portfolio.png";
 import { motion } from 'motion/react';
 
 const skills = [
@@ -15,7 +19,7 @@ const projects = [
     description:
       "An app that transforms trip planning into a fun, collaborative, and engaging process for the whole family.",
     tags: ["Angular", "Node.js", "Figma"],
-    image: "/Allaboard.png",
+    image: Allaboard,
     link: "https://espionach.notion.site/ALLABOARD-a-collaborative-trip-planning-tool-2680617671ff8071a6def36018e5ba96",
   },
   {
@@ -23,7 +27,7 @@ const projects = [
     description:
       "My personal portfolio site that you are looking at right now.",
     tags: ["React", "Tailwind CSS", "Figma"],
-    image: "/Portfolio.png",
+    image: Portfolio,
     link: "https://github.com/schung06/portfolio",
   },
   {
@@ -31,15 +35,15 @@ const projects = [
     description:
       "An app designed specifically for Gen Z by merging addictive features of social media with essential life skills content.",
     tags: ["Swift", "Figma", "TypeScript"],
-    image: "/1Life.png",
+    image: OneLife,
     link: "https://devpost.com/software/onelife-hmn9xk",
   },
   {
     title: "The Way Back Home",
     description:
-      " A 2D RPG game where you'll guide a brave dog through a dark forest to find the way back home and reunite with their owner.",
+      " A 2D RPG game where you'll guide a lost dog through a dark forest to find the way back home and reunite with their owner.",
     tags: ["Unity", "Unity DevOps", "Audacity"],
-    image: "/WayBackHome.webp",
+    image: WayBackHome,
     link: "https://absolutezer0527.itch.io/the-way-back-home",
   },
 ];

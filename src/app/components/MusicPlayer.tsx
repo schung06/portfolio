@@ -1,5 +1,6 @@
 import { Music, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import BGM from "@/app/assets/BGM.mp3";
 
 export function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -69,7 +70,7 @@ export function MusicPlayer() {
       <audio
         ref={audioRef}
         loop
-        src="/BGM.mp3"
+        src={BGM}
         onEnded={() => setIsPlaying(false)}
       />
     </div>

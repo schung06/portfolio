@@ -1,5 +1,6 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'motion/react';
+import AboutMe from "@/app/assets/AboutMe.webp";
 
 export function About() {
   return (
@@ -28,7 +29,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <ImageWithFallback
-              src="/AboutMe.webp"
+              src= {AboutMe}
               alt="Me at the beach"
               className="w-full h-full object-cover"
             />

@@ -75,7 +75,7 @@ export function About() {
                 <li className="flex items-start gap-3">
                   <span style={{ color: "#8ba888" }}>✓</span>
                   <span style={{ color: "#6a5a4a" }}>
-                    Design Co.
+                    XR Lab
                   </span>
                 </li>
               </ul>

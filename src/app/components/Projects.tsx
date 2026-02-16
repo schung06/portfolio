@@ -26,7 +26,7 @@ const projects = [
     title: "Portfolio Site",
     description:
       "My personal portfolio site that you are looking at right now.",
-    tags: ["React", "Tailwind CSS", "Figma"],
+    tags: ["React", "Tailwind CSS", "Git", "Figma"],
     image: Portfolio,
     link: "https://github.com/schung06/portfolio",
   },

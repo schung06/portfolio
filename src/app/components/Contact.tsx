@@ -1,21 +1,58 @@
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
-import { useState } from 'react';
-import { motion } from 'motion/react';
+import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { useState } from "react";
+import { motion } from "motion/react";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thanks for reaching out! This is a demo form.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const formDataToSend = new FormData();
+    formDataToSend.append(
+      "access_key",
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+    );  
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("message", formData.message);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitStatus("idle"), 5000); // Clear message after 5 seconds
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -174,12 +211,40 @@ export function Contact() {
 
             <button
               type="submit"
-              className="w-full px-6 py-3 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2"
-              style={{ backgroundColor: "#8ba888", color: "#ffffff" }}
+              disabled={isSubmitting || submitStatus === "success"}
+              className="w-full px-6 py-3 rounded-xl transition-all hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              style={{
+                backgroundColor:
+                  submitStatus === "success" ? "#6b9f68" : "#6b9f68",
+                color: "#ffffff",
+              }}
             >
-              Send Message
-              <Send size={18} />
+              {isSubmitting
+                ? "Sending..."
+                : submitStatus === "success"
+                  ? "✓ Submitted"
+                  : "Send Message"}
+              {submitStatus !== "success" && <Send size={18} />}
             </button>
+
+            {/* Success/Error Messages */}
+            {submitStatus === "success" && (
+              <div
+                className="p-4 rounded-xl text-center"
+                style={{ backgroundColor: "#8ba888", color: "#ffffff" }}
+              >
+                ✓ Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+
+            {submitStatus === "error" && (
+              <div
+                className="p-4 rounded-xl text-center"
+                style={{ backgroundColor: "#d4756c", color: "#ffffff" }}
+              >
+                ✗ Failed to send message. Please try again or email me directly.
+              </div>
+            )}
           </motion.form>
         </div>
       </div>

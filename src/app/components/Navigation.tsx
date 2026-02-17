@@ -63,7 +63,7 @@ export function Navigation() {
           className="text-xl transition-colors"
           style={{ color: isScrolled ? "#f5f3ef" : "#5a4a3a" }}
         >
-          Portfolio
+          Stephanie Chung
         </button>
 
         {/* Desktop Navigation */}

@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
+import HeroBackground from "@/app/assets/home.jpg";
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -10,7 +11,12 @@ export function Hero() {
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative px-6 py-20"
-      style={{ backgroundColor: "#f5f3ef" }}
+      style={{
+        backgroundImage: `linear-gradient(rgba(245, 243, 239, 0.85), rgba(245, 243, 239, 0.85)), url(${HeroBackground})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <motion.div
         className="max-w-4xl mx-auto text-center"

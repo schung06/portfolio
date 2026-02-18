@@ -1,6 +1,7 @@
 import { Mail, Github, Linkedin, Send } from "lucide-react";
 import { useState } from "react";
 import { motion } from "motion/react";
+import contactBackground from "@/app/assets/connect.jpg";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -63,7 +64,12 @@ export function Contact() {
     <section
       id="contact"
       className="min-h-screen flex items-center px-6 py-20"
-      style={{ backgroundColor: "#e8e5df" }}
+      style={{
+        backgroundImage: `linear-gradient(rgba(232, 229, 223, 0.9), rgba(232, 229, 223, 0.9)), url(${contactBackground})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="max-w-4xl mx-auto w-full">
         <motion.h2

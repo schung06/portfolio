@@ -1,5 +1,6 @@
 import { Code2, Database, Globe, Smartphone } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import Syllabus from "@/app/assets/SyllabusReview.png";
 import Allaboard from "@/app/assets/Allaboard.png";
 import OneLife from "@/app/assets/1Life.png";
 import WayBackHome from "@/app/assets/WayBackHome.webp";
@@ -14,6 +15,14 @@ const skills = [
 ];
 
 const projects = [
+  {
+    title: "ERSP Syllabus Review Tool",
+    description:
+      "An app for reviewing and grading course syllabi side-by-side with a rubric, with group and individual progress tracking.",
+    tags: ["React", "Node.js", "Express", "SQLite", "Railway"],
+    image: Syllabus,
+    link: "https://github.com/schung06/syllabus-review-app",
+  },
   {
     title: "Allaboard",
     description:
